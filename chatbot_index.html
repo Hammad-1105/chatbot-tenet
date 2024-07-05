@@ -42,18 +42,21 @@
         }
         button {
             padding: 10px;
-            border: 1px solid #ccc;
-            background-color: #007BFF;
+            border: 1px solid #fe6600e3; /* Orange border */
+            background-color: #fe6600e3; /* Orange background */
             color: white;
             border-radius: 5px;
             cursor: pointer;
+        }
+        button:hover {
+            background-color: #fe6600; /* Darker orange on hover */
         }
     </style>
 </head>
 <body>
     <div class="chat-container">
         <div class="messages" id="messages"></div>
-        <input type="text" id="messageInput" placeholder="Type your message here...">
+        <input type="text" id="messageInput" placeholder="Type your message here..." onkeypress="handleKeyPress(event)">
         <button onclick="sendMessage()">Send</button>
     </div>
     <script>
@@ -85,6 +88,12 @@
             });
 
             messageInput.value = '';
+        }
+
+        function handleKeyPress(event) {
+            if (event.key === 'Enter') {
+                sendMessage();
+            }
         }
     </script>
 </body>
